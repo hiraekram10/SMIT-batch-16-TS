@@ -1,0 +1,214 @@
+/* .main{
+    width: 100%;
+    height: 80vh;
+    background-color: white;
+    background-image: url('https://tinyurl.com/ycuyu4c9');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: left bottom;
+    background-blend-mode: multiply;
+} */
+
+body{
+    margin: 0;
+}
+
+.main{
+    width: 100%;
+    height: 80vh;
+    /* background-color: gray; */
+
+  
+}
+
+.hero{
+    /* background-color: blue; */
+    width:80vw;
+     margin: 0px auto;
+     display: flex;
+     align-items: center;
+     height: auto;
+
+    
+}
+.text-sec{
+  /* background-color: aqua; */
+  width: 50%;
+  
+}
+.content{
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.content h1{
+ font-size: 2.5em;
+}
+.content p {
+    font-size: 1em;
+}
+.img-sec{
+  /* background-color: bisque; */
+  width: 50%;
+}
+.img-sec img{
+    width: 100%;
+    
+}
+.btn{
+    /* background-color: blueviolet; */
+   display:flex
+}
+.btn button{
+    background-color: #F53838;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 15px 20px;
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 1px 5px 15px #F53838;
+}
+.data{
+    /* background-color: aquamarine; */
+    width: 80vw;
+    height: 10vh;
+    margin: 0px auto;
+    margin-top:10px ;
+    display: flex;
+   
+    border-radius: 10px;
+}
+.card1{
+    /* background-color: #F53838; */
+    flex-grow: 1;
+   
+}
+.card2{
+    /* background-color: #5bf538; */
+    flex-grow: 1;
+    
+}
+.card3{
+    /* background-color: #38cff5; */
+    flex-grow: 1;
+   
+}
+.cards{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+    border: none;
+     
+}
+
+.cards img{
+    width: 30px;
+    height: 30px;
+    
+}
+.cards div{
+    /* background-color: aqua; */
+   
+}
+.cards p {
+    margin: 2px;
+}
+.cards h3 {
+    margin: 2px;
+}
+
+
+/* bootstrap */
+.boot-main{
+    /* background-color: #F53838; */
+}
+.boot-sec{
+    /* background-color: rgb(213, 194, 46); */
+    height: 50vh;
+}
+.boot-upper{
+    /* background-color: aquamarine; */
+}
+.plan-sec{
+    /* background-color: rebeccapurple;
+     */
+}
+.btn-plan{
+    border-radius:40px !important;
+}
+
+
+
+
+
+
+@media (width <= 1060px) {
+
+
+    .hero{
+        /* background-color: yellow; */
+    }
+     .text-sec{
+        /* background-color: green; */
+        width: 60%;
+        
+    }
+    .img-sec{
+        /* background-color: greenyellow; */
+        width: 40%;
+    }
+    .content{
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* _________________________media  700__________________  */
+
+@media (width <= 700px) {
+    .hero{
+        /* background-color: red; */
+        flex-direction: column-reverse;
+        justify-content: start;
+        width: 95vw;
+        
+    }
+    .text-sec{
+        width: 100%;
+        margin-bottom: 2px;
+    }
+    .img-sec{
+        width: 100%;
+    }
+    .content{
+        text-align: center;
+        font-size: 12px;
+        
+    }
+    .btn{
+        justify-content: center;
+    }
+    .data{
+        flex-direction: column;
+         gap:2px;
+         height: 500px;
+        
+    }
+    .cards{
+        border: none;
+        height: 500px;
+        /* background-color: aqua; */
+         box-shadow:2px 2px 2px gray ;
+         border-radius: 10px;
+    }
+    .cards div{
+         border-right-color: gray;
+     border-right-style: solid;
+     border-right-width: 1px;
+    }
+
+}
