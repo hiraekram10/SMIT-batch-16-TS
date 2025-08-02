@@ -107,13 +107,7 @@
 // position ------> always starts from 0 (index)
 
 console.log(fruits[1])  //apple
-console.log(fruits[2])  //pineapple
-console.log(fruits[0]) //bnana
-
-*/
-
-
-var fruits = ["bnana","apple","pineapple"]
+   
 
 // console.log(fruits[3]); // undefined
 
