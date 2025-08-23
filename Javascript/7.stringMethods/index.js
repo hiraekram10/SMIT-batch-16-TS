@@ -20,7 +20,7 @@ for (var i = 0; i < name.length; i++) {
     }
     else {
         if (temp) {
-            result += temp
+            result +=  temp
             temp =''
       
         } else {
