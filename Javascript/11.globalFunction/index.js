@@ -46,24 +46,30 @@
 
 var add = document.getElementById('add')
 function checkProduct(e) {
-    if (e.code === 'Enter') {
+    if ( e.code === 'Enter') {
         var userkiValue = e.target.value
-        console.log('hi');
+        console.log(e);
         
         var proList = ["facewash", 'cleanser', 'scrub', "foundation"]
         if (proList.indexOf(userkiValue) === -1) {
             add.innerHTML = 'product is not avalable'
+            return userkiValue
         } else {
             add.innerHTML=  'available'
+            return userkiValue
         }
     }
 
 
 
 }
-// var usInp = prompt('enter')
-// var funcRet = checkProduct('foundation')
-// console.log(funcRet);
+var usInp = checkProduct()
+console.log(usInp);
+var a = 'hello'
+console.log(a);
+
+
+
 
 
 
