@@ -93,7 +93,7 @@
 
 
 // let myPromise = new Promise((resolve,reject)=>{
-//    var pass = 8236
+//    var pass = 8237
 //     if(pass === 8236){
 //    resolve('promise full')
 //     }else{
@@ -120,13 +120,12 @@
 // DELETE   dlt data 
 
 
-//   cod 200 ok
+//   code 200 ok
 
-
-let getProducts = fetch('https://fakestoreapi.com/products')
-getProducts.then(res =>res.json())
-.then(res =>console.log(res))
-.catch(err =>console.log(err))
+// let getProducts = fetch('https://fakestoreapi.com/products')
+// getProducts.then(res =>res.json())
+// .then(res =>console.log(res))
+// .catch(err =>console.log(err))
 
 
 
