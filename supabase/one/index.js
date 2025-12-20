@@ -15,7 +15,9 @@ async function register(e){
   password: password.value,
   options:{
     data:{
-        userName :userName.value
+        userName :userName.value,
+   
+        
     }
   }
 })

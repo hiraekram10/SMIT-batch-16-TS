@@ -2,6 +2,7 @@ import supabase from "./config.js";
 
 
 let img = document.getElementById('img')
+let main = document.getElementById('main')
 let picName;
 let uploadBtn = document.getElementById('uploadBtn')
  async function uploadMYfILE() {
@@ -18,20 +19,29 @@ const { data, error } = await supabase
 
    if(data){
     picName = data.path
-    const { data : urlData } = supabase
+   
+   const { data:urlData } = supabase
   .storage
   .from('images')
   .getPublicUrl(picName)
+  
+    if(urlData){
+      console.log('public url obj --->',urlData);
+       console.log('public url --->',urlData.publicUrl);
+       const { error } = await supabase
+  .from('pics')
+  .insert({ imageUrl:urlData.publicUrl})
+      
+    }
+    if(error){
+      console.log(error);
+      
+    }else{
+      console.log('pic created successfully');
+      
+    }
     
 
-  if(urlData){
-    console.log(urlData);
-       console.log(urlData.publicUrl);
-       const { error } = await supabase
-  .from('countries')
-  .insert({ id: 1, name: 'Mordor' })
-    
-  }
  }else{
     console.log(error);
     
@@ -42,3 +52,25 @@ const { data, error } = await supabase
 
 
 uploadBtn.addEventListener('click',uploadMYfILE)
+
+async function getAllPics (){
+  try {
+   const { data, error } = await supabase
+  .from('pics')
+  .select('*')
+  if(data){
+   console.log(data);
+   data.forEach(pic => {
+      main.innerHTML +=`<div><img src='${pic.imageUrl}'></div>`
+      
+   });
+   
+  }
+   
+  } catch (error) {
+   console.log(error);
+   
+  }
+}
+
+getAllPics()
