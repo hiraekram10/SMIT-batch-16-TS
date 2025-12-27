@@ -36,7 +36,7 @@ let pcategory = document.getElementById('pcategory')
 let pdesc = document.getElementById('pdesc')
 let pimage = document.getElementById('pimage')
 
-addColors.addEventListener("click", () => {
+addColors && addColors.addEventListener("click", () => {
   let div = document.createElement("div");
   div.innerHTML = ` <input type="color" name="" class="colorsInp" >
     <p  class="removeColor">X</p>
@@ -113,7 +113,7 @@ if(error){
     
 }
 
-_addProduct.addEventListener('submit',addProduct)
+_addProduct && _addProduct.addEventListener('submit',addProduct)
 
 // function add (a){
 //     let adding = a +10
@@ -122,3 +122,39 @@ _addProduct.addEventListener('submit',addProduct)
 
 // let retCh = add(20)
 // console.log(retCh);
+
+let allProd = document.getElementById('allProd')
+
+async function showAllProduct(params) {
+  try{
+    const { data, error } = await supabase
+  .from('products')
+  .select('*')
+  if(data){
+  data.forEach((product,index)=>{
+    console.log(product);
+    allProd.innerHTML +=`<div class="card" style="width: 18rem;">
+  <img src="${product.imgUrl}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${product.name}</h5>
+   
+      <p class="card-text">${product.category}</p>
+    <button class="btn btn-primary" onclick="window.location.href='DetailProd.html?id=${product.id}'">view Details</button>
+  </div>
+</div>`
+    
+  })
+    
+  }else{
+    console.log(error);
+    
+  }
+  }catch(error){
+    console.log(error);
+    
+  }
+}
+
+
+showAllProduct()
+
