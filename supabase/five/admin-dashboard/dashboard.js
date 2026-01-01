@@ -1,3 +1,4 @@
+
 import supabase from "../config.js";
 
 async function checkRole(params) {
@@ -141,6 +142,9 @@ async function showAllProduct(params) {
       <p class="card-text">${product.category}</p>
     <button class="btn btn-primary" onclick="window.location.href='DetailProd.html?id=${product.id}'">view Details</button>
   </div>
+   
+    <button class="btn btn-primary" onclick="edtPost(${product.id})" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
+
 </div>`
     
   })
@@ -157,4 +161,100 @@ async function showAllProduct(params) {
 
 
 showAllProduct()
+let ecolorsGroup = document.getElementById("colorsGroup");
+let eaddColors = document.getElementById("addColors");
+let _eaddProduct = document.getElementById('addProduct')
+let epname = document.getElementById('pname')
+let epprice = document.getElementById('pprice')
+let epcategory = document.getElementById('pcategory')
+let epdesc = document.getElementById('pdesc')
+let epimage = document.getElementById('pimage')
+
+window.edtPost= async function(pId){
+  const { data,error } = await supabase
+  .from('products')
+  .select('*')
+  .eq('id',pId)
+  .single()
+
+  if(data){
+    console.log(data);
+    
+  epname.value = data.name
+  epprice.value = data.price
+  epcategory.value = data.category
+  epdesc.value = data.desc
+   data.colors.forEach((clr)=>{
+let colorDiv = document.createElement("div")
+colorDiv.innerHTML =`<input type="color" name="" class="colorsInp" value="${clr}">
+    <p  class="removeColor">X</p>
+`
+
+  colorsGroup.appendChild(colorDiv);
+
+  colorDiv.querySelector(".removeColor").addEventListener("click", () => {
+    colorDiv.remove();
+  });
+
+ 
+   })
+    
+  }
+  
+  
+}
+
+
+
+
+
+
+
+let main = document.getElementById('main')
+let total = document.getElementById('total')
+
+function renderCartiItems (){
+   let cart = JSON.parse(localStorage.getItem('cart')) || []
+   let t = 0
+   main.innerHTML =""
+  cart.forEach((el,index)=>{
+    t += el.price * el.quantity
+    main.innerHTML +=`<div class="card">
+    <div class="row">
+  <img  src="${el.imgUrl}" class="card-img-left col-4" alt="...">
+  <div class="card-body col-4">
+    <h5 class="card-title">${el.name}</h5>
+    <p class="card-text">${el.price}</p>
+  </div>
+<div class="card-body col-4 d-flex align-items-center">
+<button onclick="updateQuan(${index},1)">+</button>
+                  <p>${el.quantity}</p>
+                  <button onclick="updateQuan(${index},-1)">-</button>
+</div>
+  </div>
+
+ 
+</div>`
+  })
+   total.innerHTML = `<div>${t}</div>`
+}
+
+renderCartiItems ()
+ 
+
+window.updateQuan = function (index,operand){
+  let cart = JSON.parse(localStorage.getItem('cart')) || []
+
+  console.log(index,operand);
+  cart[index].quantity +=operand
+  if(cart[index].quantity <=0){
+   cart.splice(index,1) 
+  }
+
+
+
+
+localStorage.setItem('cart',JSON.stringify(cart))
+  renderCartiItems ()
+}
 
