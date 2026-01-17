@@ -1,10 +1,6 @@
 // let a = false  // implicit
 // a = true 
-
-
-
 // let num:number  = 10  //explicit
-
 // let hello:number;
 // hello = 0 
 // console.log(hello)
