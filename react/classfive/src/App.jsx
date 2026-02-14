@@ -2,18 +2,22 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
+import Counter from './component/Counter'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyForm from '../../classfive/src/component/MyForm'
+import EditComp from './EditComp'
+import MyForm from './component/MyForm'
+import Cards from './component/Cards'
 
 function App() {
+ const [open,setOpen]= useState(false)
 
   return (
     <>
-     <Navbar/>
-<Hero/>
-<MyForm
+    <Cards/>
+  <MyForm/>
+
+   
+       
     </>
   )
 }
