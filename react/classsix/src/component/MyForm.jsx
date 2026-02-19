@@ -5,22 +5,29 @@ import supbase from '../config/supbase'
 const MyForm = () => {
 
 const [email,setEmail] = useState('')
-const 
+const [error,setError]= useState('')
 const [password,setPassword] = useState('')
 
     const handleSubmit =async (a)=>{
         a.preventDefault()
         console.log(email , password);
-        const { data, error } = await supbase.auth.signInWithPassword({
-  email: email,
-  password: password,
-})
-if(data){
-    alert('dataadded')
-    console.log(data);
-    
-}
-        
+
+  if(email < 5 ){
+                            setError('email must be at least 5 characters long')
+                            console.log('form ki submition ruk gai');
+                            
+                            
+                            return
+                            
+
+
+                        }else{
+                            setError('')
+                        }
+
+
+                        console.log('form submit',email);
+                                
     }
 
 
@@ -40,11 +47,13 @@ if(data){
                     value={email}
                     onChange={(e)=>{
                         console.log(e.target.value)
-                        
-                        setEmail(e.target.value)
+                        let value = e.target.value
+                        setEmail(value)
+                      
                     }}
                      class="form-control" id="emailInput" placeholder="name@example.com" required/>
                     <label for="emailInput">Email address</label>
+                    {error && <p>{error}</p>}
                 </div>
 
               
@@ -68,7 +77,7 @@ if(data){
                 
                 <div class="text-center">
                     <span class="small text-muted">Don't have an account?</span>
-                    <a href="#" class="small text-decoration-none fw-bold">Sign up</a>
+                    <a href="/hello.jsx" class="small text-decoration-none fw-bold">Sign up</a>
                 </div>
             </form>
         </div>
