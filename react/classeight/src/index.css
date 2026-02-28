@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import "tailwindcss";
+
+
+
+@theme{
+  --font-hira : "Bebas Neue", sans-serif; 
+  --color-pink : #aaaa
+}
